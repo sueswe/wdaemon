@@ -1,0 +1,5 @@
+REGEDIT4
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wdaemon\Parameters]
+"Application"="C:\strawberry\perl\bin\perl.exe"
+"AppDirectory"="d:\bin\wdaemon"
+"AppParameters"="wdaemon.pl"
