@@ -11,6 +11,7 @@ wdaemon - a cronlike daemon for Windows 2000/XP
 1) Requirements
 
     * MS Windows Ressource Kit Tools
+      http://www.microsoft.com/download/en/details.aspx?id=17657
 
 2) Installation
 
