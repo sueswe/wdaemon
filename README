@@ -1,1 +1,57 @@
-wdaemon
+==============================================================================
+wdaemon - a cronlike daemon for Windows 2000/XP
+==============================================================================
+
+0) About
+
+    I use Perl Treads to restart a script oder program every n seconds.
+    To do so, i install a perl script as a windows service with
+    the windows ressource kit tools.
+
+1) Requirements
+
+    * MS Windows Ressource Kit Tools
+
+2) Installation
+
+2.1) Install a Windows Service
+
+    Assuming the Windows Ressource Kit Tools are installed
+    in 
+    
+        C:\bin\Windows Resource Kits\
+    
+    you are able to install a new windows service:
+    
+        instsrv.exe wdaemon "C:\bin\Windows Resource Kits\Tools\srvany.exe"
+    
+    Next, you have to install the Perl Script as service, therefor
+    create a wdaemin.reg file with following content (Change the path names 
+    for your installation):
+    
+    REGEDIT4
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wdaemon\Parameters]
+    "Application"="c:\perl\bin\perl.exe"
+    "AppDirectory"="c:\bin\wdaemon"
+    "AppParameters"="wdaemon.pl c:\bin\wdaemon\wdaemon.rc"
+    
+    and insert it into your registry.
+    
+    
+3) Usage
+
+    For the configuration see the wdaemon.rc - file.
+    If you add, delete or change entries, you have to restart 
+    the service.
+
+
+4) Uninstallation
+
+    Stop the service with:
+    
+        net stop TestService
+
+    Uninstall the service with:
+    
+        instsrv.exe wdaemon remove
+    
