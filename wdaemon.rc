@@ -1,0 +1,16 @@
+# wdaemon.rc
+#
+# IMPORTAND: Avoid empty lines! (will be fixed )
+#
+# Description:
+#
+# Three columns, seperated by ";"
+#   First:    The number of the thread
+#   Second:   the script/program to execute
+#   Third:    waittime between the calls
+#
+#
+# Examples:
+1;echo hello world;35
+#2;c:\\bin\\test.cmd;20
+#
