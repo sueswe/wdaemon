@@ -1,5 +1,5 @@
 ==============================================================================
-wdaemon - a cronlike daemon for Windows 2000/XP
+wdaemon - a cronlike daemon for Windows 2000/XP/Server/7
 ==============================================================================
 
 0) About
@@ -26,9 +26,12 @@ wdaemon - a cronlike daemon for Windows 2000/XP
     
         instsrv.exe wdaemon "C:\bin\Windows Resource Kits\Tools\srvany.exe"
     
+    Under Windows 7 you have to run this command as administrator.
+    (Start, Run, "cmd", Ctrl+Shift+Enter)
+    
     Next, you have to install the Perl Script as service, therefor
-    create a wdaemin.reg file with following content (Change the path names 
-    for your installation):
+    create a wdaemon.reg file with following content (Change the path names 
+    for your needs/installation of perl):
     
     REGEDIT4
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wdaemon\Parameters]
@@ -50,7 +53,7 @@ wdaemon - a cronlike daemon for Windows 2000/XP
 
     Stop the service with:
     
-        net stop TestService
+        net stop wdaemon
 
     Uninstall the service with:
     
