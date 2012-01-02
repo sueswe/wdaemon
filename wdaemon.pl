@@ -17,16 +17,16 @@ use Log::Log4perl qw(:easy);
 
 Log::Log4perl->easy_init(
 {
-   # levels from low to high:
-   #level => $DEBUG,
-   level => $INFO,
+   #levels from low to high:
+    level => $DEBUG,
+    level => $INFO,
    #level => $WARN,
    #level => $ERROR,
    #level => $FATAL,
-   file => ">> $logfile",
+    file => ">> $logfile",
    #file => 'stdout',
-   mode => "append",
-   layout => "%d %p> %m%n",
+    mode => "append",
+    layout => "%d %p> %m%n",
    }
 );
 my $log = get_logger;
@@ -40,8 +40,9 @@ open(FILE, "< $rc_file");
     while (<FILE>) {
         chomp;
         my $current = $_;
-        if ($current =~ /^#/) {
+        if ($current =~ /^#/ || $current eq "" ) {
             #ignoring
+            DEBUG("Ignoring line ($current)");
         } else {
             $log->info("$current");
             my @tmp = split(/;/,$current);
