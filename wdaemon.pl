@@ -1,5 +1,17 @@
 #!/usr/bin/perl
 
+# Copyright (C) 2011  Werner Süß
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ##############################################################################
 # wdaemon.pl 
 # A cron-like daemon for win32 systems
@@ -41,7 +53,7 @@ open(FILE, "< $rc_file");
         chomp;
         my $current = $_;
         if ($current =~ /^#/ || $current eq "" ) {
-            #ignoring
+            #ignoring these kind of lines
             DEBUG("Ignoring line ($current)");
         } else {
             $log->info("$current");
@@ -51,21 +63,18 @@ open(FILE, "< $rc_file");
     }
 close(FILE);
 
-# Threads mal erzeugen
+# create Threads 
 foreach(@entry) {
     my $thr = threads->new(\&create_thread, "$_");
     $thr->detach;
     #print "done.\n";
 }
 
-# den daemon am leben erhalten :)
+# keep daemon alive
 while(1) {
     $log->info("$0: I am still alive ...");
-    sleep(120); #FIXME
+    sleep(300); #FIXME
 }
-
-
-
 
 
 ################################
@@ -107,7 +116,7 @@ sub get_call {
         chomp;
         my $current = $_;
         if ($current =~ /^#/) {
-            #ignoring
+            #ignoring such lines
         } else {
             if ( $current =~ /^$num_entry/) {
                 #$log->info("$current");
@@ -153,29 +162,3 @@ sub get_intervall {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=pod
-
-REGEDIT4
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wdaemon\Parameters]
-"Application"="d:\\bin\\perl\\bin\\perl.exe"
-"AppDirectory"="d:\\bin\\wdaemon"
-"AppParameters"="wdaemon.pl wdaemon.rc"
-
-=cut
