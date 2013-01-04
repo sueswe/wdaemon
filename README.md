@@ -1,5 +1,5 @@
 ==============================================================================
-wdaemon - a cronlike daemon for Windows 2000/XP/Server/7
+wdaemon - a cronlike daemon for Windows
 ==============================================================================
 
 0) About
@@ -10,55 +10,27 @@ wdaemon - a cronlike daemon for Windows 2000/XP/Server/7
 
 1) Requirements
 
-    * MS Windows Ressource Kit Tools
-      http://www.microsoft.com/download/en/details.aspx?id=17657
+    Following Perl-Modules are required:
+    * threads
+    * Log:.Log4perl
 
 2) Installation
 
 2.1) Install a Windows Service
 
-    Assuming the Windows Ressource Kit Tools are installed
-    in 
+    You are able to install a new windows service
+   with sc.exe and srvany.exe.
     
-        C:\bin\Windows Resource Kits\
-    
-    you are able to install a new windows service:
-    
-        instsrv.exe wdaemon "C:\bin\Windows Resource Kits\Tools\srvany.exe"
-    
-    Under Windows 7 you have to run this command as administrator.
-    (Start, Run, "cmd", Ctrl+Shift+Enter)
-    
-    Next, you have to install the Perl Script as service, therefor
-    create a wdaemon.reg file with following content (Change the path names 
-    for your needs/installation of perl):
-    
-    REGEDIT4
-    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wdaemon\Parameters]
-    "Application"="c:\perl\bin\perl.exe"
-    "AppDirectory"="c:\bin\wdaemon"
-    "AppParameters"="wdaemon.pl c:\bin\wdaemon\wdaemon.rc"
-    
-    and insert it into your registry.
-    
-    
+2.2) Linux and Un*x
+
+    Just start the wdaemon.pl script however you want.
+
 3) Usage
 
     For the configuration see the wdaemon.rc - file.
     If you add, delete or change entries, you have to restart 
     the service.
 
-
-4) Uninstallation
-
-    Stop the service with:
-    
-        net stop wdaemon
-
-    Uninstall the service with:
-    
-        instsrv.exe wdaemon remove
-    
 
 ------------------------------------------------------------------------------
 (c) 2011 by Werner Süß, GPL
