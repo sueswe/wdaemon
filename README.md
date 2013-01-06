@@ -11,8 +11,8 @@ wdaemon - a cronlike daemon for Windows
 1) Requirements
 
     Following Perl-Modules are required:
-    * threads (http://search.cpan.org/~jdhedden/threads-1.86/lib/threads.pm)
-    * Log::Log4perl (http://search.cpan.org/~mschilli/Log-Log4perl-1.40/)
+    * threads <http://search.cpan.org/~jdhedden/threads-1.86/lib/threads.pm>
+    * Log::Log4perl <http://search.cpan.org/~mschilli/Log-Log4perl-1.40/>
 
 2) Installation
 
