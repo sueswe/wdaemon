@@ -32,57 +32,57 @@
 
 <h1>wdaemon - a cronlike daemon for Windows</h1>
 
-<p>0) About</p>
+<h2>0) About</h2>
 
-<p>I use Perl threads to restart a script or program every n seconds.
-To do so, I install a perl script as a windows service with
-the windows ressource kit tools.</p>
+<p>I use Perl threads to restart a script or program every n seconds.<br>
+To do so, I install a perl script as a windows service with<br>
+the windows ressource kit tools.  </p>
 
-<p>1) Requirements</p>
+<h2>1) Requirements</h2>
 
-<p>Following Perl-Modules are required:</p>
+<p>Following Perl-Modules are required:  </p>
 
 <ul>
-<li>threads <a href="http://search.cpan.org/%7Ejdhedden/threads-1.86/lib/threads.pm">http://search.cpan.org/~jdhedden/threads-1.86/lib/threads.pm</a>
+<li>threads <a href="http://search.cpan.org/%7Ejdhedden/threads-1.86/lib/threads.pm">http://search.cpan.org/~jdhedden/threads-1.86/lib/threads.pm</a><br>
 </li>
-<li>Log::Log4perl <a href="http://search.cpan.org/%7Emschilli/Log-Log4perl-1.40/">http://search.cpan.org/~mschilli/Log-Log4perl-1.40/</a>
+<li>Log::Log4perl <a href="http://search.cpan.org/%7Emschilli/Log-Log4perl-1.40/">http://search.cpan.org/~mschilli/Log-Log4perl-1.40/</a><br>
 </li>
-</ul><p>2) Installation</p>
+</ul><h2>2) Installation</h2>
 
-<p>2.1) Install a Windows Service</p>
+<h3>2.1) Install a Windows Service</h3>
 
-<p>You are able to install a new windows service with sc.exe and srvany.exe.
-Use srvany from the Windows RessourceKitTool 2003. 
-Example: sc create MyService binPath= C:\foo\bar\srvany.exe DisplayName= "My Custom Service"
-Then use RegEdit: create a "Parameters" key for your service 
-(e.g. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MyService\Paramaters)
-Within the newly created "Parameters"-key, create a string-value called 
-"Application" and enter the full path to the perl.exe c:\bar\foo\wdameon.pl .
-See <a href="http://support.microsoft.com/kb/251192/EN-US">http://support.microsoft.com/kb/251192/EN-US</a></p>
+<p>You are able to install a new windows service with sc.exe and srvany.exe.<br>
+Use srvany from the Windows RessourceKitTool 2003.<br>
+Example: sc create MyService binPath= C:\foo\bar\srvany.exe DisplayName= "My Custom Service"<br>
+Then use RegEdit: create a "Parameters" key for your service<br>
+(e.g. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MyService\Paramaters)<br>
+Within the newly created "Parameters"-key, create a string-value called<br>
+"Application" and enter the full path to the perl.exe c:\bar\foo\wdameon.pl .<br>
+See <a href="http://support.microsoft.com/kb/251192/EN-US">http://support.microsoft.com/kb/251192/EN-US</a>  </p>
 
-<p>2.2) Linux and Un*x</p>
+<h3>2.2) Linux and Un*x</h3>
 
 <p>Just start the wdaemon.pl script however you want =)</p>
 
-<p>3) Usage</p>
+<h2>3) Usage</h2>
 
-<p>For the configuration see the wdaemon.rc - file.
-If you add, delete or change entries, you have to restart 
-the service.</p>
+<p>For the configuration see the wdaemon.rc - file.<br>
+If you add, delete or change entries, you have to restart<br>
+the service.  </p>
 
-<hr><p>(c) 2011-2013 by Werner Süß, GPL
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.</p>
+<hr><p>(c) 2011-2013 by Werner Süß, GPL<br>
+This program is free software: you can redistribute it and/or modify<br>
+it under the terms of the GNU General Public License as published by<br>
+the Free Software Foundation, either version 3 of the License, or<br>
+(at your option) any later version.  </p>
 
-<p>This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.</p>
+<p>This program is distributed in the hope that it will be useful,<br>
+but WITHOUT ANY WARRANTY; without even the implied warranty of<br>
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the<br>
+GNU General Public License for more details.  </p>
 
-<p>You should have received a copy of the GNU General Public License
-along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+<p>You should have received a copy of the GNU General Public License<br>
+along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.  </p>
         </section>
 
         <aside id="sidebar">
