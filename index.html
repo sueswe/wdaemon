@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wdaemon by sueswe</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+
+      <header>
+        <h1>Wdaemon</h1>
+        <p>windows process daemon</p>
+      </header>
+
+      <div id="banner">
+        <span id="logo"></span>
+
+        <a href="https://github.com/sueswe/wdaemon" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/sueswe/wdaemon/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/sueswe/wdaemon/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
+
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
+        <h1></h1>
+
+<h1>wdaemon - a cronlike daemon for Windows</h1>
+
+<p>0) About</p>
+
+<pre><code>I use Perl Treads to restart a script oder program every n seconds.
+To do so, i install a perl script as a windows service with
+the windows ressource kit tools.
+</code></pre>
+
+<p>1) Requirements</p>
+
+<pre><code>Following Perl-Modules are required:
+* threads &lt;http://search.cpan.org/~jdhedden/threads-1.86/lib/threads.pm&gt;
+* Log::Log4perl &lt;http://search.cpan.org/~mschilli/Log-Log4perl-1.40/&gt;
+</code></pre>
+
+<p>2) Installation</p>
+
+<p>2.1) Install a Windows Service</p>
+
+<pre><code>You are able to install a new windows service with sc.exe and srvany.exe.
+Use srvany from the Windows RessourceKitTool 2003. 
+Example: sc create MyService binPath= C:\foo\bar\srvany.exe DisplayName= "My Custom Service"
+Then use RegEdit: create a "Parameters" key for your service 
+(e.g. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MyService\Paramaters\)
+Within the newly created "Parameters"-key, create a string-value called 
+"Application" and enter the full path to the perl.exe c:\bar\foo\wdameon.pl .
+See &lt;http://support.microsoft.com/kb/251192/EN-US&gt;
+</code></pre>
+
+<p>2.2) Linux and Un*x</p>
+
+<pre><code>Just start the wdaemon.pl script however you want.
+</code></pre>
+
+<p>3) Usage</p>
+
+<pre><code>For the configuration see the wdaemon.rc - file.
+If you add, delete or change entries, you have to restart 
+the service.
+</code></pre>
+
+<hr><p>(c) 2011 by Werner S��, GPL
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.</p>
+
+<p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.</p>
+
+<p>You should have received a copy of the GNU General Public License
+along with this program.  If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/sueswe">sueswe</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
