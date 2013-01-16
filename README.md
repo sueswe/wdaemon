@@ -18,8 +18,14 @@ wdaemon - a cronlike daemon for Windows
 
 2.1) Install a Windows Service
 
-    You are able to install a new windows service
-    with sc.exe and srvany.exe.
+    You are able to install a new windows service with sc.exe and srvany.exe.
+    Use srvany from the Windows RessourceKitTool 2003. 
+    Example: sc create MyService binPath= C:\foo\bar\srvany.exe DisplayName= "My Custom Service"
+    Then use RegEdit: create a "Parameters" key for your service 
+    (e.g. HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MyService\Paramaters\)
+    Within the newly created "Parameters"-key, create a string-value called 
+    "Application" and enter the full path to the perl.exe c:\bar\foo\wdameon.pl .
+    See <http://support.microsoft.com/kb/251192/EN-US>
     
 2.2) Linux and Un*x
 
