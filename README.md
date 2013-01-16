@@ -4,8 +4,8 @@ wdaemon - a cronlike daemon for Windows
 
 0) About
 
-    I use Perl Treads to restart a script oder program every n seconds.
-    To do so, i install a perl script as a windows service with
+    I use Perl threads to restart a script or program every n seconds.
+    To do so, I install a perl script as a windows service with
     the windows ressource kit tools.
 
 1) Requirements
@@ -29,7 +29,7 @@ wdaemon - a cronlike daemon for Windows
     
 2.2) Linux and Un*x
 
-    Just start the wdaemon.pl script however you want.
+    Just start the wdaemon.pl script however you want =)
 
 3) Usage
 
@@ -39,7 +39,8 @@ wdaemon - a cronlike daemon for Windows
 
 
 ------------------------------------------------------------------------------
-(c) 2011 by Werner Sï¿½ï¿½, GPL
+
+(c) 2011-2013 by Werner Süß, GPL
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
@@ -52,3 +53,5 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
