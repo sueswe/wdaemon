@@ -18,7 +18,9 @@
 # (c) 2010,2011 Werner Süß
 # mailto:suess_w@gmx.net
 #
-my $logfile="d:\\bin\\wdaemon\\wdaemon.log";   # FIXME
+use Cwd;
+my $pwd = getcwd();
+my $logfile="$pwd\\wdaemon.log";   # FIXME
 #
 ##############################################################################
 
@@ -31,7 +33,7 @@ Log::Log4perl->easy_init(
 {
    #levels from low to high:
     level => $DEBUG,
-    level => $INFO,
+   #level => $INFO,
    #level => $WARN,
    #level => $ERROR,
    #level => $FATAL,
@@ -42,7 +44,7 @@ Log::Log4perl->easy_init(
    }
 );
 my $log = get_logger;
-my $rc_file = "wdaemon.rc";
+my $rc_file = "$pwd\\wdaemon.rc";
 my @entry;
 
 if ( ! -e $rc_file) { $log->error("rc-file not found: $!") && die(); }
