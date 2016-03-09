@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-# Copyright (C) 2011  Werner Süß
+# Copyright (c) 2011-2016  Werner S.
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
@@ -15,14 +15,12 @@
 ##############################################################################
 # wdaemon.pl 
 # A cron-like daemon for win32 systems
-# (c) 2010,2011 Werner Süß
 # mailto:suess_w@gmx.net
-#
+##############################################################################
+
 use Cwd;
 my $pwd = getcwd();
-my $logfile="$pwd\\wdaemon.log";   # FIXME
-#
-##############################################################################
+my $logfile="$pwd\\wdaemon.log";
 
 use warnings;
 use strict;
@@ -31,18 +29,18 @@ use Log::Log4perl qw(:easy);
 
 Log::Log4perl->easy_init(
 {
-   #levels from low to high:
-    level => $DEBUG,
-   #level => $INFO,
-   #level => $WARN,
-   #level => $ERROR,
-   #level => $FATAL,
+    #levels from low to high:
+    #level => $DEBUG,
+    level => $INFO,
+    #level => $WARN,
+    #level => $ERROR,
+    #level => $FATAL,
     file => ">> $logfile",
-   #file => 'stdout',
+    #file => 'stdout',
     mode => "append",
     layout => "%d %p> %m%n",
-   }
-);
+});
+
 my $log = get_logger;
 my $rc_file = "$pwd\\wdaemon.rc";
 my @entry;
@@ -75,7 +73,7 @@ foreach(@entry) {
 # keep daemon alive
 while(1) {
     $log->info("$0: I am still alive ...");
-    sleep(300); #FIXME
+    sleep(300);
 }
 
 
@@ -94,10 +92,10 @@ sub create_thread {
         #system(@command) || $log->warn("Problem running [$command] (maybe a shell-buidin?): $!");
         open(FH,"-|","@command") || $log->warn("Problem running [$command] (maybe a shell-buidin?): $!");
         while(<FH>) {
-        my $out .= $_;
-        my $timestamp = localtime();
-        print "($timestamp): $out";
-        #$c++;
+            my $out .= $_;
+            my $timestamp = localtime();
+            print "($timestamp): $out";
+            #$c++;
         }
         close(FH);
         $log->info("Thread $entry_number sleeps for $sleeptime seconds.");
