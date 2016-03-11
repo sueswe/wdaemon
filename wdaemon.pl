@@ -14,13 +14,14 @@
 
 ##############################################################################
 # wdaemon.pl 
-# A cron-like daemon for win32 systems
+# A cron-like daemon for windows server
 # mailto:suess_w@gmx.net
 ##############################################################################
 
 use Cwd;
-my $pwd = getcwd();
-my $logfile="$pwd\\wdaemon.log";
+my $logdir = cwd();
+my $logfile="$logdir\\wdaemon.log";
+my $pwd = $logdir;
 
 use warnings;
 use strict;
@@ -45,9 +46,11 @@ my $log = get_logger;
 my $rc_file = "$pwd\\wdaemon.rc";
 my @entry;
 
-if ( ! -e $rc_file) { $log->error("rc-file not found: $!") && die(); }
+if ( ! -e $rc_file) { 
+    $log->error("rc-file not found: $!") && die(); 
+    }
 
-# rc auslesen
+# read rc
 open(FILE, "< $rc_file");
     while (<FILE>) {
         chomp;
@@ -63,9 +66,10 @@ open(FILE, "< $rc_file");
     }
 close(FILE);
 
-# create Threads 
+# create threads 
 foreach(@entry) {
     my $thr = threads->new(\&create_thread, "$_");
+    DEBUG("detaching thread ...");
     $thr->detach;
     #print "done.\n";
 }
@@ -77,10 +81,14 @@ while(1) {
 }
 
 
-################################
+
+################################################################################
+#
+# FUNCTIONS
+#
+################################################################################
+
 sub create_thread {
-################################
-    
     my ($entry_number) = @_;
     my $command = get_call($entry_number);
     my @command = split(/ /,$command);
@@ -94,20 +102,19 @@ sub create_thread {
         while(<FH>) {
             my $out .= $_;
             my $timestamp = localtime();
-            print "($timestamp): $out";
+            #print "($timestamp): $out";
+            INFO("$out");
             #$c++;
         }
         close(FH);
         $log->info("Thread $entry_number sleeps for $sleeptime seconds.");
         sleep($sleeptime);
     }
-    
 }
 
 
-################################
+
 sub get_call {
-################################
     $log->debug("get_call");
     my ($num_entry) = @_;
     open(FILE, "< $rc_file") || $log->error("Cannot open rc-file: $!");
@@ -132,9 +139,8 @@ sub get_call {
 }
 
 
-################################
+
 sub get_intervall {
-################################
     $log->debug("get_intervall");
     my ($num_entry) = @_;
     open(FILE, "< $rc_file") || $log->error("Cannot open rc-file: $!");
